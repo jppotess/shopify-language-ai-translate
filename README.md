@@ -1,23 +1,24 @@
 # Shopify Language AI Translator
 
-Tool to localize content in a Shopify store. The default language auto translators seem to miss a good amount.
+## Overview
+The Shopify Language AI Translator is a tool designed to enhance content localization in Shopify stores. It addresses the limitations of default auto translators, which often miss nuanced translations.
 
-This tool simply runs translation requests to OpenAI APIs on an exported Shopify Language CSV and gives back a CSV with translations.
+## Features
+- **Automated Translation:** Utilizes OpenAI APIs to translate content from an exported Shopify Language CSV file, returning a CSV with the translated text.
+- **Customizable Filtering:** Allows for filtering of specific elements, such as numbers, hard-coded images, and metafield values used for reference.
 
-1. Export languages from Shopify
-2. Filter based on your criteria, example:
-   1. Filter out numbers.
-   2. Exclude hard-coded images.
-   3. Remove metafield values used for reference.
-3. Load CSV into the project.
-4. Add you Open AI API Key
-5. Trial run for example 100 rows.
-6. Update your model depending on the complexity of translations.
-7. Update locales** - currently running for just `fr` (French) and `de` (German).
+## How to Use
+1. **Export Languages:** Begin by exporting the language CSV from your Shopify store.
+2. **Apply Filters:** Use filters to refine the content you want to translate (e.g., exclude numbers, images, or specific metafield values).
+3. **Load CSV:** Import the filtered CSV into the project.
+4. **API Key:** Add your OpenAI API Key to enable translations.
+5. **Input and Output CSV:** Add your CSV file names to the .env.
+6. **Trial Run:** Test the translation process on a sample set of 100 rows to ensure quality and accuracy.
+7. **Model Tuning:** Adjust your model settings according to the complexity of the content being translated.
+8. **Localization:** The tool currently supports translations for French (fr) and German (de).
 
-## TODO
-
-- Add locale mapping to handle locales dynamically
-- Add `.env` vars for input/output files
-- Handle parallel requests
-- Handle rate limiting
+## Roadmap
+- **Dynamic Locale Mapping:** Implement dynamic handling of locales.
+- **Environment Variables:** Add support for .env variables to manage input and output files.
+- **Parallel Requests:** Enable parallel processing of translation requests.
+- **Rate Limiting:** Introduce mechanisms to handle rate limiting effectively.
