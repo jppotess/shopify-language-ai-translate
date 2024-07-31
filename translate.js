@@ -8,6 +8,10 @@ require('dotenv').config();
 // Load API key from environment variables
 const apiKey = process.env.OPENAI_API_KEY;
 
+// Path to your CSV file
+const inputFile = process.env.INPUT_CSV
+const outputFile = process.env.OUTPUT_CSV
+
 // Function to log errors and info
 const logError = (message) => {
     console.error(message);
@@ -19,15 +23,21 @@ const logInfo = (message) => {
     fs.appendFileSync('info_log.txt', `${new Date().toISOString()} - ${message}\n`);
 };
 
-// Function to translate text using OpenAI's GPT-3.5-turbo model
+// Function to translate text using OpenAI's model
 const translateText = async (text, targetLanguage) => {
-    const prompt = `Translate the following text to ${targetLanguage}:\n\n${text}`;
+    const prompt = `
+    Translate the following text to ${targetLanguage}, preserving any HTML markup as is, and do not translate URLs. 
+    If a part of the text looks like a URL (starting with http:// or https://), keep it unchanged.
+    Here is the text:
+    
+    ${text}
+`;
 
     try {
         const response = await axios.post('https://api.openai.com/v1/chat/completions', {
-            model: 'gpt-3.5-turbo',
+            model: process.env.MODEL_ID,
             messages: [{ role: 'user', content: prompt }],
-            max_tokens: 150
+            max_tokens: 1000
         }, {
             headers: {
                 'Authorization': `Bearer ${apiKey}`,
@@ -42,17 +52,13 @@ const translateText = async (text, targetLanguage) => {
     }
 };
 
-// Path to your CSV file
-const inputFile = 'final-filter.csv';
-const outputFile = 'final-translations.csv';
-
 // Read CSV and process rows
 const rows = [];
 fs.createReadStream(inputFile)
     .pipe(csv())
     .on('data', (row) => rows.push(row))
     .on('end', async () => {
-        logInfo('Started processing CSV rows for translation.');
+        logInfo(`Started processing CSV rows for translation (${inputFile}). This may take a while...`);
         for (let row of rows) {
             const locale = row['Locale'];
             const defaultContent = row['Default content'];

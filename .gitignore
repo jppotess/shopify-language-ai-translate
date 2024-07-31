@@ -2,6 +2,7 @@ final-filter.csv
 final-translations.csv
 info_log.txt
 error_log.txt
+*.csv
 
 
 # Node.js
