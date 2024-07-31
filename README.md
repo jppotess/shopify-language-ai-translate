@@ -2,7 +2,7 @@
 
 Tool to localize content in a Shopify store. The default language auto translators seem to miss a good amount.
 
-This tool simply runs translation requests to OPEN AI APIs on an exported Shopify Language CSV and gives back a CSV with translations.
+This tool simply runs translation requests to OpenAI APIs on an exported Shopify Language CSV and gives back a CSV with translations.
 
 1. Export languages from Shopify
 2. Filter based on your criteria, example:
