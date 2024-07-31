@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "axios": "^1.7.2",
+    "csv-parser": "^3.0.0",
+    "csv-writer": "^1.6.0",
+    "dotenv": "^16.4.5",
+    "fs": "^0.0.1-security",
+    "openai": "^4.53.2"
+  },
+  "name": "csv-ai-translate",
+  "version": "1.0.0",
+  "main": "translate.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "node translate.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
