@@ -1,0 +1,1 @@
+# shopify-language-ai-translate
